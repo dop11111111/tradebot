@@ -1,28 +1,196 @@
-body{
-    margin: 0;
-    height: 100vh; /* Растягиваем на всю высоту экрана */
-    display: flex;
-    justify-content: center; /* Центр по горизонтали */
-    align-items: center; /* Центр по вертикали */
-    
-    background-image: linear-gradient(90deg, rgb(4, 5, 5), rgb(138, 113, 196), rgb(104, 75, 116),  rgb(4, 5, 5));    
+@import url('https://googleapis.com');
+
+body {
+  font-family: 'Nunito', sans-serif !important;
+  margin: 0;
+  height: 100vh; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  background-image: linear-gradient(90deg, rgb(4, 5, 5), rgb(138, 113, 196), rgb(104, 75, 116), rgb(4, 5, 5));    
 }
 
+/* ГЛАВНОЕ ОКНО */
 .trade_window {
+  color: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
   width: 500px;
   height: 700px;
-  
-  /* 1. Снизили плотность белого до 5% и добавили 10% черного для глубины */
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
-  
-  /* 2. Убрали ядовитый saturate(180%), оставив только чистое размытие */
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  
-  /* 3. Тонкая светлая обводка */
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 30px;
-  
-  /* 4. Тень */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* ХЕДЕР */
+.glass-header {
+  width: 100%;
+  height: 140px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* КЛЯКСА-СИМБИОТ */
+.symbiote-blob {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  
+  width: 240px;
+  height: 70px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  
+  /* Плавная деформация */
+  border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+  
+  /* Замедленная скорость: 10 секунд вместо 6 */
+  animation: safe-morph 10s ease-in-out infinite alternate;
+}
+
+.header-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+.glass-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  padding: 35px 40px;
+  box-sizing: border-box;
+}
+
+/* Центрирование текстовых элементов */
+.glass-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центр по горизонтали */
+  text-align: center;  /* Текст по центру */
+  gap: 8px;
+}
+
+/* БОЛЬШОЙ БЛОК СИГНАЛ */
+.signal-block {
+  width: 100%;
+  padding: 20px 30px !important;
+  box-sizing: border-box;
+  
+  display: flex !important;
+  flex-direction: row !important; /* Ставим в ряд: текст слева, картинка справа */
+  justify-content: space-between; /* Текст слева, картинка справа */
+  align-items: center; /* Центр по высоте */
+}
+
+/* Внутренний контейнер для текста сигнала */
+.signal-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Текст внутри блока сигнала выровнен по левому краю */
+}
+
+/* Стили для будущей картинки в блоке Сигнал */
+.signal-image {
+  width: 45px;  /* Зарезервированный размер под картинку */
+  height: 45px;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.signal-block .value {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.highlight-buy {
+  color: #4cd964;
+  text-shadow: 0 0 15px rgba(76, 217, 100, 0.3);
+}
+
+/* ЗЕРКАЛЬНЫЙ СТИЛЬ */
+.mirror-item {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -5px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* ФУТЕР */
+.glass-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-numbers, .footer-contact {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; 
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-numbers { height: 20px; width: 80px; letter-spacing: 2px; }
+.footer-contact { height: 20px; }
+
+.footer-numbers:hover, .footer-contact:hover {
+  background: rgba(255, 255, 255, 0.15); 
+  color: #ffffff; 
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* 🔄 МЕДЛЕННАЯ АНИМАЦИЯ (Без смены размера текста) */
+@keyframes safe-morph {
+  0% {
+    border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+  }
+  50% {
+    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+  }
+  100% {
+    border-radius: 55% 45% 65% 35% / 35% 65% 35% 65%;
+  }
 }
