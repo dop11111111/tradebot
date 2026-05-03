@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,52 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="trade_window">
-        <div class="currency">Валютная пара: </div>
-        <div class="time_exp"></div>
-        <div class="signal"></div>
-        <div class="time"></div>
+
+<div class="trade_window">
+  
+  <!-- 1. Хедер окна с плавающей кляксой -->
+  <div class="glass-header">
+    <div class="symbiote-blob">
+      <img src="8ball.png" alt="icon" class="header-icon"> TradeBot
     </div>
+  </div>
+
+  <!-- 2. Основной контент (все элементы отцентрированы) -->
+  <div class="glass-content">
+    
+    <!-- Валютная пара -->
+    <div class="glass-item">
+      <span class="label">Валютная пара</span>
+      <span class="value">EUR / USD</span>
+    </div>
+    
+    <!-- Время экспирации -->
+    <div class="glass-item">
+      <span class="label">Время сделки до:</span>
+      <span class="value">15:23</span>
+    </div>
+    
+    <!-- Блок Сигнал (подготовлен под картинку справа) -->
+    <div class="glass-item mirror-item signal-block">
+      <div class="signal-text">
+        <span class="label">Сигнал</span>
+        <span class="value highlight-buy">BUY</span>
+      </div>
+      
+      <!-- Сюда вставится ваша PNG-картинка (стрелочка или иконка) -->
+      <img src="pngtree-green-arrow-up-png-image_14645944.png" alt="icon" class="signal-image">
+    </div>
+
+  </div>
+
+  <!-- 3. Футер окна с зеркальными кнопками-ссылками -->
+  <div class="glass-footer">
+    <a href="https://t.me" target="_blank" class="footer-numbers mirror-item">8888</a>
+    <a href="https://t.me" target="_blank" class="footer-contact mirror-item">@88trdadmn</a>
+  </div>
+  
+</div>
+
     <script src="script.js"></script>
 </body>
 </html>
